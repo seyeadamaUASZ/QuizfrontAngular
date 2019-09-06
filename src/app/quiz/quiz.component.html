@@ -1,0 +1,17 @@
+<h3>Quiz</h3>
+
+  <ol type="1">
+    <li *ngFor="let element of data" >
+        {{element.content}}
+        <input type="text"  name="id" value="{{element.id}}"  />
+        <ol type="a">
+            <li *ngFor="let answer of element.answers" >
+                <input type="checkbox" name="answer.id" value="{{answer.id}}" (change)="selectanswer($event)" />
+                {{answer.content}}
+            </li>
+        </ol>
+    </li>
+  </ol>
+  <br/>
+  <button class="btn btn-primary" (click)="send(element)">Valider</button>
+
