@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { QuizComponent } from './quiz/quiz.component';
+import { ResultComponent } from './result/result.component';
 
 
 const routes: Routes = [
@@ -10,9 +11,13 @@ const routes: Routes = [
   },
   {
     path:'',
-    redirectTo:'quiz',
+    redirectTo:'jeux',
     pathMatch:'full'
-  }
+  },
+  {
+    path: 'jeux',
+    component: ResultComponent
+  },
 ];
 
 @NgModule({

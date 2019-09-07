@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +10,19 @@ export class JeuxService {
 
   constructor(private http:HttpClient) { }
 
-  listQuestion():Observable<any>{
-      return this.http.get(this.host+'questions')
+  listQuestion(){
+     return this.http.get(this.host+'questions')
+     
 
+  }
+
+  //pour une question donnée
+  getQuestion(id){
+    return this.http.get(this.host+'/questions/'+id)
+  }
+
+  //find a correct answer
+  findIdAnswer(id){
+    return this.http.get(this.host+'findcorrect/'+id)
   }
 }

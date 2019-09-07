@@ -1,1 +1,30 @@
-<p>result works!</p>
+<h3> Quiz Application </h3>
+
+<div class="col-md-6 col-md-offset-3">
+  <ol type="1">
+    <li *ngFor="let question of data">
+        {{question.content}}
+        <ol>
+            <li *ngFor="let answer of question.answers" >
+                  <label class="" [attr.for]="answer.Id">
+                    <input id="{{answer.Id}}" type="checkbox" [(ngModel)]="answer.Selected"
+                      (change)="onSelect(question, answer);" />
+                    {{answer.content}}
+                  </label>
+            </li>
+        </ol>
+    </li>
+  </ol>
+
+  <button class="btn btn-success" (click)="valider()">Valider</button>
+</div>
+
+<div *ngIf="mode==1" >
+ <div *ngIf="pourcentageScore < 60" > 
+     <p style="color:red">Votre score est {{pourcentageScore | number:'0.00'}} %</p>
+ </div>
+   <div *ngIf="pourcentageScore >=60">
+     <p style="color:green">Votre score est {{pourcentageScore | number:'0.00'}} %</p>
+   </div>
+</div>
+

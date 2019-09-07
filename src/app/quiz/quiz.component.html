@@ -1,17 +1,24 @@
 <h3>Quiz</h3>
 
-  <ol type="1">
-    <li *ngFor="let element of data" >
-        {{element.content}}
-        <input type="text"  name="id" value="{{element.id}}"  />
-        <ol type="a">
-            <li *ngFor="let answer of element.answers" >
-                <input type="checkbox" name="answer.id" value="{{answer.id}}" (change)="selectanswer($event)" />
-                {{answer.content}}
-            </li>
-        </ol>
-    </li>
-  </ol>
-  <br/>
-  <button class="btn btn-primary" (click)="send(element)">Valider</button>
+<div class="container col-md-6 col-md-offset-3">
+  <h3>{{questions.content}}</h3>
+   <div class="row text-left">
+          <div class="col-md-6" *ngFor="let option of questions.answers">
+            <label class="" [attr.for]="option.Id">
+              <input id="{{option.Id}}" type="checkbox" [(ngModel)]="option.Selected"
+                (change)="onSelect(questions, option);" />
+              {{option.content}}
+            </label>
+            
+       </div>
+         <div *ngIf="questionIndex <= data.length">
+         <button class="btn btn-success" (click)='goto(questionIndex)'>Next</button>
+         </div> 
+        </div>
+        <div *ngIf="questionIndex > data.length">
+          <p style="color:green;">Votre score de quiz est  {{score}}  </p>
+        </div>
+   </div>
+
+
 
